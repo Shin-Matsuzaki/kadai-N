@@ -19,14 +19,14 @@ def main():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD((net.parameters()), lr=0.01)
 
-    num_epochs = 1
+    num_epochs = 10
     loss_list = []
 
     for epoch in range(1, num_epochs + 1):
         optimizer.zero_grad()
 
         y_pred = net(X)
-        print(y_pred.shape)
+        # print(y_pred.shape)
         loss = criterion(y_pred, y)
 
         # 勾配計算
@@ -46,7 +46,7 @@ def main():
     output = net(X)
     print(output.size())
 
-    # 予測ラベルの計算 torch.max()は最大値意外と位置を計算
+    # 予測ラベルの計算 torch.max()は最大値以外と位置を計算
     _, labels_pred = torch.max(output, dim=1)
     print(labels_pred)
 
